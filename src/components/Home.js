@@ -8,7 +8,6 @@ function Home() {
   const {
     state: { products },
   } = CartState();
-  console.log(products);
   return (
     <div className="home">
       <Filters />
