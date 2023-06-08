@@ -1,6 +1,7 @@
 import React from "react";
 import { CartState } from "../context/Context";
 import SingleProduct from "./SingleProduct";
+import "./styles.css";
 
 function Home() {
   const {
