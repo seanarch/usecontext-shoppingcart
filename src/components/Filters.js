@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { CartState } from "../context/Context";
 import Rating from "./Rating";
 
 const Filters = () => {
   // make state for rating
+  const [rate, setRate] = useState(2);
 
   return (
     <div className="filters">
@@ -44,7 +46,10 @@ const Filters = () => {
           id={`inline-4`}
         />
       </span>
-
+      <span>
+        <label style={{ paddingRight: 10 }}>Rating: </label>
+        <Rating rating={rate} style={{ cursor: "pointer" }} />
+      </span>
       <Button variant="light">Clear Filters</Button>
     </div>
   );
