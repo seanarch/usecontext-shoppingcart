@@ -34,6 +34,14 @@
   margin: 10px;
 }
 
+.cartitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  margin-bottom: 20px;
+}
+
 .cartItemImg {
   border-radius: 50%;
   width: 50px;
