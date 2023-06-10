@@ -8,6 +8,7 @@ const SingleProduct = ({ prod }) => {
     state: { cart },
     dispatch,
   } = CartState();
+
   return (
     <div className="products">
       <Card>

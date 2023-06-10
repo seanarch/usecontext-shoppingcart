@@ -9,8 +9,12 @@ import {
   Nav,
 } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
+import { CartState } from "../context/Context";
 
 function Header() {
+  const {
+    state: { cart },
+  } = CartState();
   return (
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
@@ -29,7 +33,7 @@ function Header() {
           <Dropdown alignRight>
             <Dropdown.Toggle variant="success">
               <FaShoppingCart color="white" fontSize="25px" />
-              <Badge>{10}</Badge>
+              <Badge>{cart.length}</Badge>
             </Dropdown.Toggle>
             <Dropdown.Menu style={{ minWidth: 370 }}>
               <span style={{ padding: 10 }}>Cart is Empty!</span>
