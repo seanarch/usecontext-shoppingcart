@@ -28,7 +28,11 @@ const Context = ({ children }) => {
     searchQuery: "",
   });
 
-  return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
+  return (
+    <Cart.Provider value={{ state, dispatch, productState, productDispatch }}>
+      {children}
+    </Cart.Provider>
+  );
 };
 
 export const CartState = () => {
