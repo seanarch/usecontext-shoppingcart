@@ -7,6 +7,13 @@ const Filters = () => {
   // make state for rating
   const [rate, setRate] = useState(2);
 
+  const {
+    productState: { byStock, byFastDelivery, sort, byRating },
+    productDispatch,
+  } = CartState();
+
+  console.log(byStock, byFastDelivery, sort, byRating);
+
   return (
     <div className="filters">
       <span className="title">Filter Products</span>
@@ -17,6 +24,13 @@ const Filters = () => {
           name="group1"
           type="radio"
           id={`inline-1`}
+          onChange={() =>
+            productDispatch({
+              type: "SORT_BY_PRICE",
+              payload: "lowToHigh",
+            })
+          }
+          checked={sort === "lowToHigh" ? true : false}
         />
       </span>
       <span>
@@ -26,6 +40,13 @@ const Filters = () => {
           name="group1"
           type="radio"
           id={`inline-2`}
+          onChange={() =>
+            productDispatch({
+              type: "SORT_BY_PRICE",
+              payload: "highToLow",
+            })
+          }
+          checked={sort === "lowToHigh" ? false : true}
         />
       </span>
       <span>
@@ -35,6 +56,12 @@ const Filters = () => {
           name="group1"
           type="checkbox"
           id={`inline-3`}
+          onChange={() =>
+            productDispatch({
+              type: "FILTER_BY_STOCK",
+            })
+          }
+          checked={byStock}
         />
       </span>
       <span>
@@ -44,14 +71,25 @@ const Filters = () => {
           name="group1"
           type="checkbox"
           id={`inline-4`}
+          onChange={() =>
+            productDispatch({
+              type: "FILTER_BY_DELIVERY",
+            })
+          }
+          checked={byFastDelivery}
         />
       </span>
       <span>
         <label style={{ paddingRight: 10 }}>Rating: </label>
         <Rating
-          rating={rate}
+          rating={byRating}
           style={{ cursor: "pointer" }}
-          onClick={(i) => setRate(i + 1)}
+          onClick={(i) =>
+            productDispatch({
+              type: "FILTER_BY_RATING",
+              payload: i + 1,
+            })
+          }
         />
       </span>
       <Button variant="light">Clear Filters</Button>
